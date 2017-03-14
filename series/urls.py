@@ -24,6 +24,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 router = routers.DefaultRouter()
 router.register(r'users', profile_views.UserViewSet)
 router.register(r'series', tvseries_views.SerieViewSet)
+router.register(r'follow', tvseries_views.FollowSeries)
 #router.register(r'add', tvseries_views.Addseries)
 
 urlpatterns = [

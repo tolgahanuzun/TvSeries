@@ -4,8 +4,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets
-from tvseries.models import Serie
-from tvseries.serializers import Serieslizer,Addserialize
+from tvseries.models import Serie,Fseires
+from tvseries.serializers import Serieslizer,Addserialize,AddFollow
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 
@@ -13,15 +13,18 @@ class SerieViewSet(viewsets.ModelViewSet):
 	queryset = Serie.objects.all().order_by('-raiting')
 	serializer_class = Serieslizer
 
-	def update(self, request, pk=None):
-		author = request.user.pk
-		print(pk)
-		requser = User.objects.get(pk=author)
-		reqseri = Serie.objects.get(pk=int(pk))
-		reqseri.owner.add(requser)
-		reqseri.save()
-		return Response(status=status.HTTP_201_CREATED)
+	#def update(self, request, pk=None):
+	#	author = request.user.pk
+	#	print(pk)
+	#	requser = User.objects.get(pk=author)
+	#	reqseri = Serie.objects.get(pk=int(pk))
+	#	reqseri.owner.add(requser)
+	#	reqseri.save()
+	#	return Response(status=status.HTTP_201_CREATED)
 
+class FollowSeries(viewsets.ModelViewSet):
+	queryset = Fseires.objects.all().order_by('-id')
+	serializer_class = AddFollow
 
 	
 #

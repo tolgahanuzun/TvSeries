@@ -15,8 +15,14 @@ class Serie(models.Model):
 	image_org = models.URLField()
 	imdblink = models.URLField()
 	raiting = models.FloatField()
-	owner = models.ManyToManyField(User,related_name="seria")
-
 
 	def __str__(self):
 		return "%s" % (self.title)
+
+
+class Fseires(models.Model):
+	seriesname = models.ForeignKey(Serie)
+	followuser = models.ForeignKey(User)
+	
+	def __str__(self):
+		return "%s" % (self.seriesname)

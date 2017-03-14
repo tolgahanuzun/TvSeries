@@ -1,11 +1,11 @@
-from tvseries.models import Serie
+from tvseries.models import Serie,Fseires
 from rest_framework import serializers
 
 
-#class Serieslizers(serializers.HyperlinkedModelSerializer):
-#    class Meta:
-#        model = Serie
-#        fields = ('url','title', 'language', 'imdblink','raiting' )
+class AddFollow(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Fseires
+        fields = ('url','seriesname', 'followuser' )
 
 class Serieslizer(serializers.HyperlinkedModelSerializer):
     class Meta:
